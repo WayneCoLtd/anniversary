@@ -91,8 +91,7 @@ const Navigation: React.FC = () => {
 
   const navItems = [
     { path: '/home', label: '首页' },
-    { path: '/gallery', label: '精彩瞬间' },
-    { path: '/milestones', label: '成长历程' }
+    { path: '/gallery', label: '精彩瞬间' }
   ];
 
   return (
@@ -115,4 +114,4 @@ const Navigation: React.FC = () => {
   );
 };
 
-export default Navigation; 
+export default Navigation;

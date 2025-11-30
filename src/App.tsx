@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Intro from './components/Intro';
 import Gallery from './components/Gallery';
-import Milestones from './components/Milestones';
 import Footer from './components/Footer';
 import GlobalStyles from './styles/GlobalStyles';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -281,11 +280,7 @@ function App() {
                       <Gallery />
                     </Section>
                   } />
-                  <Route path="/milestones" element={
-                    <Section>
-                      <Milestones />
-                    </Section>
-                  } />
+                  
                 </Routes>
               </MainContent>
               <Footer />
