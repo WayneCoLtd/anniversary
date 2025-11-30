@@ -488,7 +488,7 @@ const Intro: React.FC = () => {
         >
           <span style={{ color: "#FF6B6B" }}>🎉</span> 
           <span style={{ background: "linear-gradient(45deg, #FF6B6B, #FFD700, #4ECDC4, #A06CD5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-            Doreen 一周岁啦
+            Love you, Doreen 💖
           </span> 
           <span style={{ color: "#4ECDC4" }}>🎉</span>
         </Title>
