@@ -174,7 +174,7 @@ function App() {
           playPromise.catch(error => {
             setAudioError('浏览器阻止了音频播放');
             
-            const audioUrl = 'https://imgs.todaybing.com/media/happy-birthday.mp3';
+            const audioUrl = 'https://wz.bmwuv.cn/vmini?c=vVmpna';
             
             const audioElement = document.createElement('audio');
             audioElement.controls = false;
