@@ -126,7 +126,7 @@ function App() {
       audioRef.current.remove();
     }
     
-    const audioUrl = '/audio/happy-birthday.mp3';
+    const audioUrl = '/audio/lovestory.mp3';
     
     const audio = new Audio();
     audio.src = audioUrl;
