@@ -90,8 +90,8 @@ const Navigation: React.FC = () => {
   const navigate = useNavigate();
 
   const navItems = [
-    { path: '/home', label: '首页' },
-    { path: '/gallery', label: '精彩瞬间' }
+    { path: '/home', label: 'Home' },
+    { path: '/gallery', label: 'Our moments' }
   ];
 
   return (
