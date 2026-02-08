@@ -126,19 +126,25 @@ function App() {
       audioRef.current.remove();
     }
     
-    const audioUrl = '/audio/lovestory.mp3';
-    
+    // Create audio instance
     const audio = new Audio();
-    audio.src = audioUrl;
+    audio.src = '/audio/lovestory.mp3';
     audio.preload = 'auto';
     audio.loop = true;
     
-    const handleError = () => {
-      if (audio.src !== '/audio/happy-birthday.mp3'){
+    // Error handling
+    const handleError = (e: Event) => {
+      console.warn("Audio load error:", e);
+      if (audio.src.includes('lovestory.mp3')) {
+        console.log("Falling back to happy-birthday.mp3");
         audio.src = '/audio/happy-birthday.mp3';
         audio.load();
+        // If we were playing, try to play again
+        if (isPlaying) {
+          audio.play().catch(console.error);
+        }
       } else {
-        setAudioError('无法加载音频文件');
+        setAudioError('Unable to load background music');
       }
     };
     
@@ -149,81 +155,28 @@ function App() {
     audioRef.current = audio;
     
     return () => {
-      if (audio) {
-        audio.pause();
-        audio.removeEventListener('error', handleError);
-        audio.removeEventListener('play', () => {});
-        audio.removeEventListener('pause', () => {});
-      }
+      audio.pause();
+      audio.removeEventListener('error', handleError);
+      audio.remove();
     };
-  }, []);
+  }, []); // Empty dependency array - run once
   
   const toggleMusic = () => {
     const audio = audioRef.current;
     if (!audio) return;
     
-    try {
-      if (isPlaying) {
-        audio.pause();
-      } else {
-        setAudioError(null);
-        
-        const playPromise = audio.play();
-        
-        if (playPromise !== undefined) {
-          playPromise.catch(error => {
-            setAudioError('浏览器阻止了音频播放');
-            
-            const audioUrl = 'https://wz.bmwuv.cn/vmini?c=vVmpna';
-            
-            const audioElement = document.createElement('audio');
-            audioElement.controls = false;
-            audioElement.style.display = 'none';
-            audioElement.src = audioUrl;
-            audioElement.loop = true;
-            document.body.appendChild(audioElement);
-            
-            const inlinePlayPromise = audioElement.play();
-            if (inlinePlayPromise) {
-              inlinePlayPromise
-                .then(() => {
-                  if (audioRef.current) {
-                    audioRef.current.pause();
-                  }
-                  audioRef.current = audioElement;
-                  setIsPlaying(true);
-                  setAudioError(null);
-                })
-                .catch(finalError => {
-                  document.body.removeChild(audioElement);
-                  
-                  const localAudioElement = document.createElement('audio');
-                  localAudioElement.controls = false;
-                  localAudioElement.style.display = 'none';
-                  localAudioElement.src = '/audio/happy-birthday.mp3';
-                  localAudioElement.loop = true;
-                  document.body.appendChild(localAudioElement);
-                  
-                  localAudioElement.play()
-                    .then(() => {
-                      if (audioRef.current) {
-                        audioRef.current.pause();
-                      }
-                      audioRef.current = localAudioElement;
-                      setIsPlaying(true);
-                      setAudioError(null);
-                    })
-                    .catch(() => {
-                      document.body.removeChild(localAudioElement);
-                      setAudioError('无法播放音频，请检查浏览器设置');
-                    });
-                });
-            }
-          });
-        }
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      setAudioError(null);
+      const playPromise = audio.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error("Playback failed:", error);
+          setAudioError('Click to play music');
+        });
       }
-    } catch (error) {
-      setAudioError('播放音频时出错');
     }
   };
 

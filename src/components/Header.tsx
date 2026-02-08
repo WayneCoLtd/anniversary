@@ -7,13 +7,13 @@ const HeaderContainer = styled(motion.header)`
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
+  background: linear-gradient(135deg, #FFAFBD 0%, #ffc3a0 100%);
   padding: var(--spacing-xl) 0;
   margin-bottom: var(--spacing-xl);
   box-shadow: var(--shadow-lg);
   position: relative;
   overflow: hidden;
-  min-height: 50vh;
+  min-height: 45vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,8 +27,8 @@ const HeaderContainer = styled(motion.header)`
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 40%),
-      radial-gradient(circle at 80% 80%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%);
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%),
+      radial-gradient(circle at 80% 80%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%);
     animation: pulse 8s ease-in-out infinite;
   }
 
@@ -75,45 +75,41 @@ const HeaderContent = styled.div`
 `;
 
 const Title = styled(motion.h1)`
-  color: white;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 400;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 700;
   text-align: center;
   margin: 0;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-  line-height: 1.2;
-  letter-spacing: 2px;
-  background: linear-gradient(to right, #ffffff, #ffe1e1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: 'Montserrat', sans-serif, -apple-system, BlinkMacSystemFont;
-
+  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.15);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  
   @media (max-width: 768px) {
-    font-size: clamp(2rem, 8vw, 3.5rem);
-    letter-spacing: 1px;
+    font-size: clamp(2.5rem, 9vw, 3.5rem);
+    letter-spacing: 0;
   }
 `;
 
 const DateText = styled(motion.p)`
   color: rgba(255, 255, 255, 0.95);
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   text-align: center;
   margin: var(--spacing-md) 0 0;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-  font-weight: 400;
-  font-style: italic;
-  background: linear-gradient(to right, #ffffff, #ffe1e1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 8px 20px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+  letter-spacing: 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 10px 30px;
   display: inline-block;
+  text-transform: uppercase;
 
   @media (max-width: 768px) {
-    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
     margin-top: var(--spacing-sm);
-    padding: 5px 15px;
+    padding: 8px 20px;
   }
 `;
 
@@ -197,8 +193,8 @@ const Header: React.FC = () => {
         />
       ))}
       <HeaderContent>
-        <Title variants={itemVariants}>Happy first birthday, Zane!</Title>
-        <DateText variants={itemVariants}>2025年4月25日</DateText>
+        <Title variants={itemVariants}>Happy 22nd birthday, Doreen!</Title>
+        <DateText variants={itemVariants}>2026年02月09日</DateText>
       </HeaderContent>
     </HeaderContainer>
   );

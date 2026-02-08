@@ -6,13 +6,14 @@ const GlobalStyles: React.FC = () => {
     <Global
       styles={css`
         :root {
-          --primary-color: #FF6B6B;
-          --secondary-color: #FFE66D;
-          --text-primary: #333333;
-          --text-secondary: #666666;
-          --bg-color: #f9f9f9;
-          --card-bg: rgba(255, 255, 255, 0.9);
-          --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+          --primary-color: #E88D67; /* Softer terracotta/pink */
+          --secondary-color: #F3F7EC; /* Off-white */
+          --accent-color: #006989; /* Deep blue for contrast */
+          --text-primary: #2C3639;
+          --text-secondary: #5D6D7E;
+          --bg-color: #FDFBF7;
+          --card-bg: rgba(255, 255, 255, 0.85);
+          --bg-gradient: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
           
           --spacing-xs: 0.25rem;
           --spacing-sm: 0.5rem;
@@ -21,16 +22,16 @@ const GlobalStyles: React.FC = () => {
           --spacing-xl: 3rem;
           
           --border-radius-sm: 4px;
-          --border-radius-md: 8px;
-          --border-radius-lg: 16px;
+          --border-radius-md: 12px;
+          --border-radius-lg: 24px;
           
-          --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-          --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-          --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+          --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+          --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
+          --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.08);
           
-          --transition-fast: 0.2s ease;
-          --transition-medium: 0.3s ease;
-          --transition-slow: 0.5s ease;
+          --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+          --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         * {
@@ -40,38 +41,22 @@ const GlobalStyles: React.FC = () => {
         }
         
         body {
-          font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-            Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          font-family: 'Montserrat', 'Manrope', -apple-system, sans-serif;
           background: var(--bg-color);
           color: var(--text-primary);
-          line-height: 1.6;
+          line-height: 1.7;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           position: relative;
           overflow-x: hidden;
         }
         
-        img {
-          max-width: 100%;
-          height: auto;
-        }
-        
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-        
-        button {
-          cursor: pointer;
-          border: none;
-          background: none;
-          font-family: inherit;
-        }
-        
         h1, h2, h3, h4, h5, h6 {
+          font-family: 'Playfair Display', serif;
           margin: 0 0 1rem;
-          line-height: 1.2;
+          line-height: 1.3;
           font-weight: 700;
+          color: var(--text-primary);
         }
         
         p {

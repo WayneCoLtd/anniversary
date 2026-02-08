@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { motion, PanInfo, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ModalContext } from '../App';
+import { photos } from '../data/photos';
 
 const GalleryContainer = styled(motion.section)`
   width: 100%;
@@ -319,45 +320,6 @@ const Grid = styled.div`
     padding: var(--spacing-xs);
   }
 `;
-
-const photos = [
-  {
-    id: 1,
-    src: "/images/zane_photo_01.jpg",
-    caption: "宝贝Zane的灿烂笑容",
-    height: "280px"
-  },
-  {
-    id: 2,
-    src: "/images/zane_photo_02.jpg",
-    caption: "迎接新生命的第一天",
-    height: "350px"
-  },
-  {
-    id: 3,
-    src: "/images/zane_photo_03.jpg",
-    caption: "爸爸妈妈的珍贵时光",
-    height: "320px"
-  },
-  {
-    id: 4,
-    src: "/images/zane_photo_04.jpg",
-    caption: "探索世界的好奇眼神",
-    height: "300px"
-  },
-  {
-    id: 5,
-    src: "/images/zane_photo_05.jpg",
-    caption: "天使般的甜美微笑",
-    height: "260px"
-  },
-  {
-    id: 6,
-    src: "/images/zane_photo_06.jpg",
-    caption: "成长中的每一个里程碑",
-    height: "340px"
-  },
-];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -715,7 +677,15 @@ const Gallery: React.FC = () => {
             onMouseEnter={() => handleMouseEnter(index)}
             variants={itemVariants}
           >
-            <Image src={photo.src} alt={photo.caption} />
+            <Image 
+              src={photo.src.replace('/images/', '/images/thumbnails/')} 
+              alt={photo.caption} 
+              loading="lazy" 
+              onError={(e) => {
+                // Fallback to original image if thumbnail fails
+                (e.target as HTMLImageElement).src = photo.src;
+              }}
+            />
             <ImageCaption>
               {photo.caption}
             </ImageCaption>

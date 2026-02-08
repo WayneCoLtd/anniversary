@@ -50,7 +50,7 @@ const FooterLink = styled.a`
 const Footer: React.FC = () => {
   return (
     <FooterContainer>
-      <FooterText>&copy; 2025 . Design by <FooterLink href="https://www.lylares.com/" target="_blank" rel="noopener noreferrer">LYLARES</FooterLink> </FooterText>
+      <FooterText>&copy; 2025 Designed by Michael</FooterText>
     </FooterContainer>
   );
 };
