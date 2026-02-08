@@ -36,16 +36,7 @@ const FooterText = styled.p`
   }
 `;
 
-const FooterLink = styled.a`
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px dotted currentColor;
-  transition: border-bottom var(--transition-fast);
-  
-  &:hover {
-    border-bottom: 1px solid currentColor;
-  }
-`;
+// FooterLink removed as it is not used
 
 const Footer: React.FC = () => {
   return (

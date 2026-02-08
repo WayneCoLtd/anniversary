@@ -159,6 +159,7 @@ function App() {
       audio.removeEventListener('error', handleError);
       audio.remove();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Empty dependency array - run once
   
   const toggleMusic = () => {
