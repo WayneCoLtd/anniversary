@@ -662,6 +662,11 @@ const Gallery: React.FC = () => {
     );
   };
 
+  const [visibleCount, setVisibleCount] = useState(12);
+  const handleLoadMore = () => {
+    setVisibleCount(prev => Math.min(prev + 12, photos.length));
+  };
+
   return (
     <GalleryContainer
       ref={ref}
@@ -670,7 +675,7 @@ const Gallery: React.FC = () => {
       animate={inView ? "visible" : "hidden"}
     >
       <Grid>
-        {photos.map((photo, index) => (
+        {photos.slice(0, visibleCount).map((photo, index) => (
           <ImageCard
             key={photo.id}
             onClick={() => handleImageClick(index)}
@@ -678,7 +683,7 @@ const Gallery: React.FC = () => {
             variants={itemVariants}
           >
             <Image 
-              src={photo.src.replace('/images/', '/images/thumbnails/')} 
+              src={photo.src.replace('/images/', '/images/thumbnails/').replace(/\.(jpg|jpeg|png)$/i, '.webp')} 
               alt={photo.caption} 
               loading="lazy" 
               onError={(e) => {
@@ -692,6 +697,29 @@ const Gallery: React.FC = () => {
           </ImageCard>
         ))}
       </Grid>
+      
+      {visibleCount < photos.length && (
+        <motion.button
+          onClick={handleLoadMore}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          style={{
+            marginTop: '2rem',
+            padding: '12px 32px',
+            background: '#fff',
+            border: '1px solid rgba(0,0,0,0.1)',
+            borderRadius: '30px',
+            fontSize: '1rem',
+            cursor: 'pointer',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+            color: 'var(--text-primary)',
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 500
+          }}
+        >
+          Load More Photos ({photos.length - visibleCount} remaining)
+        </motion.button>
+      )}
     </GalleryContainer>
   );
 };
